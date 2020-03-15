@@ -5,4 +5,13 @@ a {
     @apply text-blue-700 underline;
 }
 
+li {
+    @apply ml-2;
+}
+
+ul li:before {
+    content: "→ ";
+    @apply mr-1;
+}
+
 @tailwind utilities;

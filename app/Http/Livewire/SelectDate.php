@@ -8,7 +8,7 @@ class SelectDate extends Component
 {
     public $date;
 
-    public function mount($date)
+    public function mount(string $date)
     {
         $this->date = $date;
     }

@@ -5,10 +5,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>{{ env('APP_NAME') }}</title>
         @livewireStyles
+        <link rel="stylesheet" href="{{ mix('css/app.css') }}">
     </head>
     <body>
-        <x-navigation />
-        @yield('content')
+        <div class="container mx-auto min-h-screen flex flex-col flex-grow">
+            <x-navigation />
+            @yield('content')
+        </div>
         @livewireScripts
+        <script src="{{ mix('js/app.js') }}"></script>
     </body>
 </html>

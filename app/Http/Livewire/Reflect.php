@@ -8,9 +8,11 @@ class Reflect extends Component
 {
     public $date;
     public $hasSelectedDate = false;
+    public $hasAnsweredQuestions = false;
 
     protected $listeners = [
         'onSelectedDate',
+        'onAnsweredQuestions',
     ];
 
     public function mount()
@@ -18,10 +20,15 @@ class Reflect extends Component
         $this->date = now()->format('Y-m-d');
     }
 
-    public function onSelectedDate($selected)
+    public function onSelectedDate(string $selected)
     {
         $this->date = $selected;
         $this->hasSelectedDate = true;
+    }
+
+    public function onAnsweredQuestions()
+    {
+        $this->hasAnsweredQuestions = true;
     }
 
     public function render()
