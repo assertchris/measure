@@ -29,13 +29,13 @@
             <span class="text-gray-700">Comment</span>
             <textarea
                 class="form-textarea mt-1 block w-full"
-                rows="3"
+                rows="10"
                 name="comment_{{ $question }}"
                 wire:change="onChange('comment_{{ $question }}', $event.target.value)"
             >{{ $answer->{"comment_$question"} }}</textarea>
         </label>
     </div>
-    <div class="flex flex-row w-full flex-shrink">
+    <div class="flex flex-row w-full flex-shrink my-8">
         <button type="button" wire:click="onBack" class="bg-gray-400 px-4 py-2 rounded text-white">back</button>
         <button type="button" wire:click="onForward" class="bg-blue-500 px-4 py-2 rounded text-white ml-2">forward</button>
     </div>
