@@ -79,9 +79,6 @@ class AnswerQuestions extends Component
         $answer = $this->answer();
         $answer->$field = $value;
         $answer->save();
-
-        // refresh for next render
-        $answer->fresh();
     }
 
     public function render()
