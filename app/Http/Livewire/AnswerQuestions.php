@@ -22,14 +22,20 @@ class AnswerQuestions extends Component
     ];
 
     public $user;
-    public $date;
+    public $selected;
     public $question;
 
-    public function mount(int $userId, string $date)
+    public function mount(int $userId, string $selected)
     {
         $this->user = User::findOrFail($userId);
-        $this->date = $date;
+        $this->selected = $selected;
         $this->question = session()->get('AnswerQuestions.question', static::QUESTIONS[0]);
+    }
+
+    public static function goToFirstQuestion()
+    {
+        $question = static::QUESTIONS[0];
+        session()->put('AnswerQuestions.question', $question);
     }
 
     public function onBack()
@@ -60,7 +66,7 @@ class AnswerQuestions extends Component
 
     private function answer()
     {
-        $answer = Answer::where('answered_for', $this->date)
+        $answer = Answer::where('answered_for', $this->selected)
             ->where('user_id', $this->user->id)
             ->first();
 
@@ -68,8 +74,8 @@ class AnswerQuestions extends Component
             return $answer;
         }
 
-        return Answer::create([
-            'answered_for' => $this->date,
+        return new Answer([
+            'answered_for' => $this->selected,
             'user_id' => $this->user->id,
         ]);
     }

@@ -6,7 +6,7 @@ use Livewire\Component;
 
 class Reflect extends Component
 {
-    public $date;
+    public $selected;
     public $hasSelectedDate = false;
     public $hasAnsweredQuestions = false;
 
@@ -17,13 +17,15 @@ class Reflect extends Component
 
     public function mount()
     {
-        $this->date = now()->format('Y-m-d');
+        $this->selected = now()->format('Y-m-d');
     }
 
     public function onSelectedDate(string $selected)
     {
-        $this->date = $selected;
+        $this->selected = $selected;
         $this->hasSelectedDate = true;
+
+        AnswerQuestions::goToFirstQuestion();
     }
 
     public function onAnsweredQuestions()

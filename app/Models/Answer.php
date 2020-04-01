@@ -30,4 +30,8 @@ class Answer extends Model
         'answered_for',
         'user_id',
     ];
+
+    protected $casts = [
+        'answered_for' => 'datetime',
+    ];
 }
