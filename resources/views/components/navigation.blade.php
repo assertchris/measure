@@ -8,6 +8,7 @@
     @else
         <a href="{{ route('show-dashboard') }}" class="ml-2">dashboard</a>
         <a href="{{ route('show-reflect') }}" class="ml-2">reflect</a>
+        <a href="{{ route('show-give-feedback') }}" class="ml-2">give feedback</a>
         <a href="{{ route('show-settings') }}" class="ml-2">settings</a>
         <a href="{{ route('auth-logout') }}" class="ml-2">logout</a>
     @endif

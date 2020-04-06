@@ -13,7 +13,14 @@ class User extends Authenticatable
 
     public function answers()
     {
-        return $this->hasMany(Answer::class);
+        return $this->hasMany(Answer::class, 'for_user_id', 'id')->latest();
+    }
+
+    public function answersFromOthers()
+    {
+        return $this->hasMany(Answer::class, 'for_user_id', 'id')
+            ->whereNotNull('from_user_id')
+            ->latest();
     }
 
     public function reports()

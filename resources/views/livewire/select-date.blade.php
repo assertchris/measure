@@ -25,7 +25,7 @@
                         wire:click="$emit('onSelectedDate', '{{ $day->format('Y-m-d') }}')"
                         class="
                             flex flex-grow h-32 items-center justify-center m-2 bg-gray-100
-                            @if($day->format('Y-m-d') == $selected)
+                            @if($day->format('Y-m-d') == $selectedDate)
                                 bg-blue-200
                             @endif
                             @if($dates->contains($day->format('Y-m-d')))
@@ -33,7 +33,7 @@
                             @endif
                         "
                     >
-                        @if($day->format('Y-m-d') == $selected)
+                        @if($day->format('Y-m-d') == $selectedDate)
                             Today
                         @else
                             {{ $day->format('d') }}

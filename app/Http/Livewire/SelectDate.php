@@ -7,7 +7,7 @@ use Livewire\Component;
 
 class SelectDate extends Component
 {
-    public $selected;
+    public $selectedDate;
 
     public $year;
     public $useYear;
@@ -15,11 +15,11 @@ class SelectDate extends Component
     public $useMonth;
     public $day;
 
-    public function mount(string $selected)
+    public function mount(string $selectedDate)
     {
-        $this->selected = $selected;
+        $this->selectedDate = $selectedDate;
 
-        [$year, $month, $day] = explode('-', $selected);
+        [$year, $month, $day] = explode('-', $selectedDate);
 
         $this->year = $this->useYear = $year;
         $this->month = $this->useMonth = $month;
@@ -48,7 +48,7 @@ class SelectDate extends Component
 
     public function onToday()
     {
-        [$year, $month, $day] = explode('-', $this->selected);
+        [$year, $month, $day] = explode('-', $this->selectedDate);
 
         $this->year = $this->useYear = $year;
         $this->month = $this->useMonth = $month;

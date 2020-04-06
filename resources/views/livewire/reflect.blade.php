@@ -1,11 +1,11 @@
 <div class="flex flex-col flex-grow w-full">
     @unless($hasAnsweredQuestions)
         @unless($hasSelectedDate)
-            <livewire:select-date :selected="$selected" />
+            <livewire:select-date :selectedDate="$selectedDate" />
         @else
-            <livewire:answer-questions :userId="auth()->user()->id" :selected="$selected" :key="$selected" />
+            <livewire:answer-questions :selectedUserId="auth()->user()->id" :selectedDate="$selectedDate" :key="$selectedDate" />
         @endif
     @else
         Good job!
-    @endif
+    @endunless
 </div>

@@ -2,22 +2,34 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\User;
 use Livewire\Component;
 
-class Reflect extends Component
+class GiveFeedback extends Component
 {
+    public $selectedUser;
     public $selectedDate;
-    public $hasSelectedDate = false;
-    public $hasAnsweredQuestions = false;
+    public $hasSelectedUser;
+    public $hasSelectedDate;
+    public $hasAnsweredQuestions;
 
     protected $listeners = [
         'onSelectedDate',
+        'onSelectedUser',
         'onAnsweredQuestions',
     ];
 
     public function mount()
     {
         $this->selectedDate = now()->format('Y-m-d');
+    }
+
+    public function onSelectedUser(int $selectedUserId)
+    {
+        $this->selectedUser = User::findOrFail($selectedUserId);
+        $this->hasSelectedUser = true;
+
+        AnswerQuestions::goToFirstQuestion();
     }
 
     public function onSelectedDate(string $selectedDate)
@@ -35,6 +47,6 @@ class Reflect extends Component
 
     public function render()
     {
-        return view('livewire.reflect');
+        return view('livewire.give-feedback');
     }
 }

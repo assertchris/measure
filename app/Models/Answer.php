@@ -28,10 +28,16 @@ class Answer extends Model
         'comment_engaging_in_learning',
         'comment_sharing_knowledge',
         'answered_for',
-        'user_id',
+        'for_user_id',
+        'from_user_id',
     ];
 
     protected $casts = [
         'answered_for' => 'datetime',
     ];
+
+    public function from()
+    {
+        return $this->belongsTo(User::class, 'from_user_id', 'id');
+    }
 }

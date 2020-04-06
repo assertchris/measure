@@ -21,14 +21,14 @@ class AnswerQuestions extends Component
         'sharing_knowledge',
     ];
 
-    public $user;
-    public $selected;
+    public $selectedUser;
+    public $selectedDate;
     public $question;
 
-    public function mount(int $userId, string $selected)
+    public function mount(int $selectedUserId, string $selectedDate)
     {
-        $this->user = User::findOrFail($userId);
-        $this->selected = $selected;
+        $this->selectedUser = User::findOrFail($selectedUserId);
+        $this->selectedDate = $selectedDate;
         $this->question = session()->get('AnswerQuestions.question', static::QUESTIONS[0]);
     }
 
@@ -66,18 +66,14 @@ class AnswerQuestions extends Component
 
     private function answer()
     {
-        $answer = Answer::where('answered_for', $this->selected)
-            ->where('user_id', $this->user->id)
-            ->first();
-
-        if ($answer) {
-            return $answer;
-        }
-
-        return new Answer([
-            'answered_for' => $this->selected,
-            'user_id' => $this->user->id,
-        ]);
+        return $this->selectedUser->answers()
+            ->firstOrNew(
+                [
+                    'answered_for' => $this->selectedDate,
+                    'for_user_id' => $this->selectedUser->id,
+                    'from_user_id' => auth()->user()->is($this->selectedUser) ? null : auth()->user()->id,
+                ]
+            );
     }
 
     public function onChange($field, $value)
