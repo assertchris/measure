@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\HandleGoogleCallback;
 use App\Http\Controllers\Auth\Logout;
 use App\Http\Controllers\ShowDashboard;
 use App\Http\Controllers\ShowReflect;
+use App\Http\Controllers\ShowSettings;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [ShowHome::class, 'handle'])
@@ -26,4 +27,7 @@ Route::middleware('auth')->group(function() {
 
     Route::get('/reflect', [ShowReflect::class, 'handle'])
         ->name('show-reflect');
+
+    Route::get('/settings', [ShowSettings::class, 'handle'])
+        ->name('show-settings');
 });

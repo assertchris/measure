@@ -15,4 +15,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Answer::class);
     }
+
+    public function reports()
+    {
+        return $this->hasMany(User::class, 'line_manager_email', 'email');
+    }
 }
