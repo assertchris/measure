@@ -23,7 +23,7 @@
                         @endif
                     >
                     <span class="ml-2 flex flex-grow">
-                        @markdownLang("questions.score_{$i}")
+                        @lang("questions.score_{$i}")
                     </span>
                 </label>
             @endfor
