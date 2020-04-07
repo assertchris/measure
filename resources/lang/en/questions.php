@@ -21,4 +21,7 @@ return [
     'engaging_in_learning_description' => 'Are you actively looking for ways to improve your skills? This can be done during normal "office hours", but it takes clear planning and communication. Are you being clear about what the company can do to help you improve. Have you documented your career growth path, and do you regularly take time to review your goals?',
     'sharing_knowledge_title' => 'Are you sharing your knowledge and skills?',
     'sharing_knowledge_description' => 'Can you explain what you do at the company, and have you written down the hard parts so someone can step in if you need to take time off? Are you seeking knowledge and/or feedback and/or mentoring from industry experts, outside of the company?',
+    'score_0' => 'Not really thinking about it, or not doing well',
+    'score_1' => 'Doing ok with this, but could be better',
+    'score_2' => 'Doing really well with this',
 ];

@@ -8,7 +8,7 @@
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
     </head>
     <body>
-        <div class="container mx-auto min-h-screen flex flex-col flex-grow">
+        <div class="container mx-auto min-h-screen flex flex-col flex-grow px-4 lg:px-0">
             <x-navigation />
             @yield('content')
         </div>
